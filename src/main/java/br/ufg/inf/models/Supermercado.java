@@ -19,4 +19,8 @@ public class Supermercado {
     public String getNome() {
         return nome;
     }
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
 }
