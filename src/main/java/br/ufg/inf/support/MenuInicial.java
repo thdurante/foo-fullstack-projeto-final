@@ -32,18 +32,14 @@ public class MenuInicial extends Menu {
         }
     }
 
-    public MenuInicial() {
-        for (Opcao o : Opcao.values()) {
-            this.menu.put(o.getCodigo(), o.toString());
-        }
-    }
+    public MenuInicial() { }
 
     @Override
     public void imprimeMenu() {
         System.out.println("---------- MENU INICIAL ----------");
 
-        for (Map.Entry<Integer, String> entry : this.menu.entrySet()) {
-            System.out.println(String.format("[%d] - %s", entry.getKey(), entry.getValue()));
+        for (Opcao o : Opcao.values()) {
+            System.out.println(String.format("[%d] - %s", o.getCodigo(), o.toString()));
         }
 
         System.out.println("----------------------------------");
