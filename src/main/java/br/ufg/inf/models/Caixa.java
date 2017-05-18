@@ -1,7 +1,10 @@
 package br.ufg.inf.models;
 
+import br.ufg.inf.support.ConsoleHelper;
 import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuCaixa;
+
+import static br.ufg.inf.support.ConsoleHelper.limpaConsole;
 
 /**
  * Created by paulo on 18/05/17.
@@ -11,6 +14,7 @@ public class Caixa {
     private Empregado empregado;
     private boolean aberto;
     private MenuCaixa menu;
+    private int opcaoMenu;
 
     public Caixa(int numero, Empregado empregado) {
         this.numero = numero;
@@ -23,8 +27,13 @@ public class Caixa {
         this.aberto = false;
     }
 
-    public void exibeMenu(){
-        this.menu.imprimeMenu();
+    public void menu(){
+        do{
+            this.menu.imprimeMenu();
+            opcaoMenu = ConsoleHelper.getInputInteiro();
+            limpaConsole();
+
+        }while(opcaoMenu != 0);
     }
 
 

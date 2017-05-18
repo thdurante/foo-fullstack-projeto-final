@@ -1,5 +1,8 @@
 package br.ufg.inf;
 
+import br.ufg.inf.models.Caixa;
+import br.ufg.inf.models.Empregado;
+import br.ufg.inf.models.Funcionario;
 import br.ufg.inf.models.Supermercado;
 import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuInicial;
@@ -54,6 +57,9 @@ public class Teste {
                 case MENU_CAIXA:
                     System.out.println("menu caixa");
                     limpaConsole();
+                    Empregado e1 = new Funcionario(255, "Paulo", 400);
+                    Caixa c1 = new Caixa(1, e1);
+                    c1.menu();
                     break;
             }
         } while (opcaoMenuInicial != 0);

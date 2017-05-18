@@ -6,10 +6,9 @@ package br.ufg.inf.support;
 public class MenuCaixa extends Menu {
 
     public enum OpcaoCaixa {
-        SAIR(0),
-        VOLTAR(1),
-        VENDER_CARTAO(2),
-        VENDER_DINHEIRO(3);
+        VOLTAR(0),
+        VENDER_CARTAO(1),
+        VENDER_DINHEIRO(2);
 
         private int codigo;
 
