@@ -10,4 +10,20 @@ public class Estoque {
     public Estoque() {
         this.produtos = new ArrayList<>();
     }
+
+    public void adicionarProduto(Produto produto){
+        this.produtos.add(produto);
+    }
+
+    public void removerProduto(Produto produto){
+        this.produtos.remove(produto);
+    }
+
+    public Produto getProduto(int indice){
+        return this.produtos.get(indice);
+    }
+
+    public int getIndice(Produto produto){
+        return this.produtos.indexOf(produto);
+    }
 }
