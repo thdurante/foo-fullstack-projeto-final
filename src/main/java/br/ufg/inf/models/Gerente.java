@@ -34,7 +34,7 @@ public class Gerente extends Empregado {
         do {
             this.menu.imprimeMenu();
             opcaoMenu = MenuHelper.getInputInteiro();
-            validaOpcaoMenu(MenuGerente.class, opcaoMenu);
+            opcaoMenu = validaOpcaoMenu(MenuGerente.class, opcaoMenu);
 
             Estoque estoque = this.supermercado.getEstoque();
 

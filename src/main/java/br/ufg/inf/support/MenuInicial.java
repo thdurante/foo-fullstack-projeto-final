@@ -4,12 +4,9 @@ public class MenuInicial extends Menu {
 
     public enum Opcao {
         SAIR(0),
-        INICIALIZAR_SUPERMERCADO(1),
-        ADICIONAR_GERENTE(2),
-        ADICIONAR_FUNCIONARIO(3),
-        LISTAR_EMPREGADOS(4),
-        MENU_GERENTE(5),
-        MENU_CAIXA(6);
+        LISTAR_EMPREGADOS(1),
+        MENU_GERENTE(2),
+        MENU_CAIXA(3);
 
         private int codigo;
 

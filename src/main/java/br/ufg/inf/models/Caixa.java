@@ -108,7 +108,7 @@ public class Caixa {
         do {
             this.menu.imprimeMenu();
             opcaoMenu = MenuHelper.getInputInteiro();
-            validaOpcaoMenu(MenuCaixa.class, opcaoMenu);
+            opcaoMenu = validaOpcaoMenu(MenuCaixa.class, opcaoMenu);
 
             switch (MenuCaixa.OpcaoCaixa.getOpcaoFromCodigo(opcaoMenu)) {
                 case VOLTAR:

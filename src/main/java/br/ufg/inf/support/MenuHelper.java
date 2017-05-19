@@ -38,7 +38,7 @@ public class MenuHelper {
         return scan.nextLine();
     }
 
-    public static void validaOpcaoMenu(Class<?> clazz, int opcao) {
+    public static int validaOpcaoMenu(Class<?> clazz, int opcao) {
         String opcaoInvalida = "Opção inválida! Tente novamente: ";
 
         if (clazz == MenuInicial.class) {
@@ -46,18 +46,22 @@ public class MenuHelper {
                 System.out.print(opcaoInvalida);
                 opcao = getInputInteiro();
             }
+            return opcao;
         }
         else if (clazz == MenuCaixa.class) {
             while (MenuCaixa.OpcaoCaixa.getOpcaoFromCodigo(opcao) == null) {
                 System.out.print(opcaoInvalida);
                 opcao = getInputInteiro();
             }
+            return opcao;
         }
         else if (clazz == MenuGerente.class) {
             while(MenuGerente.Opcao.getOpcaoFromCodigo(opcao) == null) {
                 System.out.print(opcaoInvalida);
                 opcao = getInputInteiro();
             }
+            return opcao;
         }
+        return 0;
     }
 }

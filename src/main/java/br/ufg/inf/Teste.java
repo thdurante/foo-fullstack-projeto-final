@@ -46,26 +46,14 @@ public class Teste {
 
     public static void main(String[] args) {
         do {
+            inicializaSupermercado();
             menuInicial.imprimeMenu();
             opcaoMenuInicial = getInputInteiro();
-            validaOpcaoMenu(MenuInicial.class, opcaoMenuInicial);
+            opcaoMenuInicial = validaOpcaoMenu(MenuInicial.class, opcaoMenuInicial);
 
             switch (MenuInicial.Opcao.getOpcaoFromCodigo(opcaoMenuInicial)) {
                 case SAIR:
                     System.out.println("saindo");
-                    limpaConsole();
-                    break;
-                case INICIALIZAR_SUPERMERCADO:
-                    inicializaSupermercado();
-                    System.out.println("Supermercado inicializado com dados padrões.");
-                    limpaConsole();
-                    break;
-                case ADICIONAR_GERENTE:
-                    System.out.println("adicionando gerente");
-                    limpaConsole();
-                    break;
-                case ADICIONAR_FUNCIONARIO:
-                    System.out.println("adicionando funcionario");
                     limpaConsole();
                     break;
                 case LISTAR_EMPREGADOS:
