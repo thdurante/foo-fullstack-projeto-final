@@ -17,12 +17,18 @@ public class Teste {
     private static int opcaoMenuInicial = 0;
 
     private static void inicializaSupermercado() {
+        Funcionario funcionarioCaixa1 = new Funcionario("Funcionário 1", 0.2);
+        Funcionario funcionarioCaixa2 = new Funcionario("Funcionário 2", 0.2);
+        Funcionario funcionarioCaixa3 = new Funcionario("Funcionário 3", 0.2);
         supermercado.adicionaEmpregado(new Gerente("Gerente", 2570.32, supermercado));
-        supermercado.adicionaEmpregado(new Funcionario("Funcionário 1", 0.2));
-        supermercado.adicionaEmpregado(new Funcionario("Funcionário 2", 0.2));
-        supermercado.adicionaEmpregado(new Funcionario("Funcionário 3", 0.2));
+        supermercado.adicionaEmpregado(funcionarioCaixa1);
+        supermercado.adicionaEmpregado(funcionarioCaixa2);
+        supermercado.adicionaEmpregado(funcionarioCaixa3);
         supermercado.adicionaEmpregado(new Funcionario("Funcionário 4", 0.2));
         supermercado.adicionaEmpregado(new Funcionario("Funcionário 5", 0.2));
+        supermercado.adicionaCaixa(new Caixa(1, funcionarioCaixa1));
+        supermercado.adicionaCaixa(new Caixa(2, funcionarioCaixa2));
+        supermercado.adicionaCaixa(new Caixa(3, funcionarioCaixa3));
     }
 
     public static void main(String[] args) {
@@ -67,9 +73,6 @@ public class Teste {
                 case MENU_CAIXA:
                     System.out.println("menu caixa");
                     limpaConsole();
-                    Empregado e1 = new Funcionario("Paulo", 400);
-                    Caixa c1 = new Caixa(1, e1);
-                    c1.menu();
                     break;
             }
         } while (opcaoMenuInicial != 0);
