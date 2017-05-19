@@ -3,6 +3,7 @@ package br.ufg.inf;
 import br.ufg.inf.models.*;
 import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuInicial;
+import br.ufg.inf.support.ProdutoHelper;
 import br.ufg.inf.support.UnidadeDeMedida;
 
 import static br.ufg.inf.support.MenuHelper.*;
@@ -58,6 +59,19 @@ public class Teste {
                     break;
                 case LISTAR_EMPREGADOS:
                     supermercado.listaEmpregados();
+                    limpaConsole();
+                    break;
+                case CONSULTAR_PRECO_PRODUTO:
+                    Estoque estoque = supermercado.getEstoque();
+                    String codigoProduto = ProdutoHelper.getInputCodigo();
+                    Produto produto = estoque.getProduto(codigoProduto);
+
+                    if (produto != null) {
+                        System.out.print(produto);
+                    } else {
+                        System.out.println("\nProduto não encontrado!");
+                        System.out.println("Verifique o código do produto e tente novamente!");
+                    }
                     limpaConsole();
                     break;
                 case MENU_GERENTE:
