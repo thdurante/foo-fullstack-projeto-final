@@ -1,15 +1,12 @@
 package br.ufg.inf.models;
 
-/**
- * Created by paulo on 18/05/17.
- */
 public class Funcionario extends Empregado {
 
     private double comissao;
     private int numVendas = 0;
 
-    public Funcionario(int codigo, String nome, double comissao) {
-        super(codigo, nome);
+    public Funcionario(String nome, double comissao) {
+        super(nome);
         this.numVendas = 0;
         this.comissao = comissao;
     }

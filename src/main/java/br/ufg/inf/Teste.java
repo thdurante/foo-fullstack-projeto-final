@@ -1,9 +1,6 @@
 package br.ufg.inf;
 
-import br.ufg.inf.models.Caixa;
-import br.ufg.inf.models.Empregado;
-import br.ufg.inf.models.Funcionario;
-import br.ufg.inf.models.Supermercado;
+import br.ufg.inf.models.*;
 import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuInicial;
 
@@ -20,7 +17,12 @@ public class Teste {
     private static int opcaoMenuInicial = 0;
 
     private static void inicializaSupermercado() {
-
+        supermercado.adicionaEmpregado(new Gerente("Gerente", 2570.32, supermercado));
+        supermercado.adicionaEmpregado(new Funcionario("Funcionário 1", 0.2));
+        supermercado.adicionaEmpregado(new Funcionario("Funcionário 2", 0.2));
+        supermercado.adicionaEmpregado(new Funcionario("Funcionário 3", 0.2));
+        supermercado.adicionaEmpregado(new Funcionario("Funcionário 4", 0.2));
+        supermercado.adicionaEmpregado(new Funcionario("Funcionário 5", 0.2));
     }
 
     public static void main(String[] args) {
@@ -35,7 +37,8 @@ public class Teste {
                     limpaConsole();
                     break;
                 case INICIALIZAR_SUPERMERCADO:
-                    System.out.println("inicializando supermercado");
+                    inicializaSupermercado();
+                    System.out.println("Supermercado inicializado com dados padrões.");
                     limpaConsole();
                     break;
                 case ADICIONAR_GERENTE:
@@ -51,13 +54,20 @@ public class Teste {
                     limpaConsole();
                     break;
                 case MENU_GERENTE:
-                    System.out.println("menu gerente");
+                    Gerente gerente = supermercado.getGerente();
+                    if (gerente == null) {
+                        System.out.println("O supermercado ainda não possui Gerente. " +
+                                "\nAdicione um Gerente ou inicialize o supermercado!");
+                        limpaConsole();
+                        break;
+                    }
                     limpaConsole();
+                    gerente.menu();
                     break;
                 case MENU_CAIXA:
                     System.out.println("menu caixa");
                     limpaConsole();
-                    Empregado e1 = new Funcionario(255, "Paulo", 400);
+                    Empregado e1 = new Funcionario("Paulo", 400);
                     Caixa c1 = new Caixa(1, e1);
                     c1.menu();
                     break;

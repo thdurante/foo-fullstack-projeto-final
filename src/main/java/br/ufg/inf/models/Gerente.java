@@ -1,17 +1,36 @@
 package br.ufg.inf.models;
 
-/**
- * Created by paulo on 18/05/17.
- */
-public class Gerente extends Empregado {
-    private double bonus;
+import br.ufg.inf.support.ConsoleHelper;
+import br.ufg.inf.support.MenuGerente;
 
-    public Gerente(int codigo, String nome, double bonus) {
-        super(codigo, nome);
+import static br.ufg.inf.support.ConsoleHelper.limpaConsole;
+import static br.ufg.inf.support.ConsoleHelper.validaOpcaoMenu;
+
+public class Gerente extends Empregado {
+
+    private double bonus;
+    private Supermercado supermercado;
+    private MenuGerente menu;
+    private int opcaoMenu;
+
+    public Gerente(String nome, double bonus, Supermercado supermercado) {
+        super(nome);
         this.bonus = bonus;
+        this.supermercado = supermercado;
+        this.menu = new MenuGerente();
     }
 
     public double getSalario(){
         return super.salarioBase + this.bonus;
+    }
+
+    public void menu(){
+        do{
+            this.menu.imprimeMenu();
+            opcaoMenu = ConsoleHelper.getInputInteiro();
+            validaOpcaoMenu(MenuGerente.class, opcaoMenu);
+            limpaConsole();
+
+        }while(opcaoMenu != 0);
     }
 }

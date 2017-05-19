@@ -1,16 +1,15 @@
 package br.ufg.inf.models;
 
-/**
- * Created by paulo on 18/05/17.
- */
+import java.util.UUID;
+
 public abstract class Empregado {
 
-    protected int codigo;
+    protected String codigo;
     protected String nome;
     protected double salarioBase = 2000;
 
-    public Empregado(int codigo, String nome){
-        this.codigo = codigo;
+    public Empregado(String nome){
+        this.codigo = UUID.randomUUID().toString();
         this.nome = nome;
     }
 

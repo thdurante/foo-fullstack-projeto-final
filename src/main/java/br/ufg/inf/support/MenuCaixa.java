@@ -1,8 +1,5 @@
 package br.ufg.inf.support;
 
-/**
- * Created by paulo on 18/05/17.
- */
 public class MenuCaixa extends Menu {
 
     public enum OpcaoCaixa {
@@ -32,7 +29,7 @@ public class MenuCaixa extends Menu {
 
     @Override
     public void imprimeMenu() {
-        System.out.println("---------- CAIXA ----------");
+        System.out.println("----------- MENU CAIXA -----------");
 
         for (MenuCaixa.OpcaoCaixa o : MenuCaixa.OpcaoCaixa.values()) {
             System.out.println(String.format("[%d] - %s", o.getCodigo(), o.toString()));

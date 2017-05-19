@@ -1,15 +1,10 @@
 package br.ufg.inf.support;
 
-public class MenuInicial extends Menu {
+public class MenuGerente extends Menu {
 
     public enum Opcao {
-        SAIR(0),
-        INICIALIZAR_SUPERMERCADO(1),
-        ADICIONAR_GERENTE(2),
-        ADICIONAR_FUNCIONARIO(3),
-        LISTAR_EMPREGADOS(4),
-        MENU_GERENTE(5),
-        MENU_CAIXA(6);
+        VOLTAR(0),
+        ADICIONAR_PRODUTO(1);
 
         private int codigo;
 
@@ -21,8 +16,8 @@ public class MenuInicial extends Menu {
             return codigo;
         }
 
-        public static Opcao getOpcaoFromCodigo(int codigo) {
-            for (Opcao o : Opcao.values()) {
+        public static MenuGerente.Opcao getOpcaoFromCodigo(int codigo) {
+            for (MenuGerente.Opcao o : MenuGerente.Opcao.values()) {
                 if (o.getCodigo() == codigo) return o;
             }
 
@@ -30,13 +25,13 @@ public class MenuInicial extends Menu {
         }
     }
 
-    public MenuInicial() { }
+    public MenuGerente() { }
 
     @Override
     public void imprimeMenu() {
-        System.out.println("---------- MENU INICIAL ----------");
+        System.out.println("---------- MENU GERENTE ----------");
 
-        for (Opcao o : Opcao.values()) {
+        for (MenuGerente.Opcao o : MenuGerente.Opcao.values()) {
             System.out.println(String.format("[%d] - %s", o.getCodigo(), o.toString()));
         }
 

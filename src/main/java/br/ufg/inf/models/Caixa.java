@@ -1,14 +1,10 @@
 package br.ufg.inf.models;
 
 import br.ufg.inf.support.ConsoleHelper;
-import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuCaixa;
 
 import static br.ufg.inf.support.ConsoleHelper.limpaConsole;
 
-/**
- * Created by paulo on 18/05/17.
- */
 public class Caixa {
     private int numero;
     private Empregado empregado;
@@ -35,7 +31,4 @@ public class Caixa {
 
         }while(opcaoMenu != 0);
     }
-
-
-
 }
