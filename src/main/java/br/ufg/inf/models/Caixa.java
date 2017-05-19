@@ -5,7 +5,7 @@ import br.ufg.inf.support.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static br.ufg.inf.support.ConsoleHelper.*;
+import static br.ufg.inf.support.MenuHelper.*;
 import static br.ufg.inf.support.TipoVenda.CARTAO;
 import static br.ufg.inf.support.TipoVenda.DINHEIRO;
 
@@ -99,7 +99,7 @@ public class Caixa {
     public void menu() {
         do {
             this.menu.imprimeMenu();
-            opcaoMenu = ConsoleHelper.getInputInteiro();
+            opcaoMenu = MenuHelper.getInputInteiro();
             validaOpcaoMenu(MenuCaixa.class, opcaoMenu);
 
             switch (MenuCaixa.OpcaoCaixa.getOpcaoFromCodigo(opcaoMenu)) {

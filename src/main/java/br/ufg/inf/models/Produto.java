@@ -20,6 +20,8 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
+
+
     public Produto(String nome, double valor, UnidadeDeMedida unidadeDeMedida) {
         this.codigo = UUID.randomUUID().toString();
         this.nome = nome;
@@ -64,4 +66,5 @@ public class Produto {
         return "\nPRODUTO [" + this.codigo + "] ----------------------" +
                 "\nNome: " + this.nome + " | " +  "R$: " + this.valor + " | " + "Medida: " + this.unidadeDeMedida + " | " + "Qtd: " + this.quantidade + "\n";
     }
+
 }

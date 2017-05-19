@@ -2,7 +2,7 @@ package br.ufg.inf.support;
 
 import java.util.Scanner;
 
-public class ConsoleHelper {
+public class MenuHelper {
     private static Scanner scan = new Scanner(System.in);
 
     public static void limpaConsole() {

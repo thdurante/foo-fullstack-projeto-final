@@ -5,7 +5,7 @@ import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuInicial;
 import br.ufg.inf.support.UnidadeDeMedida;
 
-import static br.ufg.inf.support.ConsoleHelper.*;
+import static br.ufg.inf.support.MenuHelper.*;
 
 public class Teste {
 
@@ -33,11 +33,13 @@ public class Teste {
 
         // Produtos
         Estoque estoque = supermercado.getEstoque();
+
         estoque.adicionaProduto(new Produto("Shampoo", 12.4, UnidadeDeMedida.UNIDADE, 100));
         estoque.adicionaProduto(new Produto("Laranja", 4.66, UnidadeDeMedida.QUILO, 24));
-        estoque.adicionaProduto(new Produto("Sabão em pó", 13.99, UnidadeDeMedida.UNIDADE, 50));
         estoque.adicionaProduto(new Produto("Azeitona em conserva", 17.5, UnidadeDeMedida.UNIDADE, 13));
+        estoque.adicionaProduto(new Produto("Sabão em pó", 13.99, UnidadeDeMedida.UNIDADE, 50));
         estoque.adicionaProduto(new Produto("Banana", 2.75, UnidadeDeMedida.QUILO, 56.9));
+
     }
 
     public static void main(String[] args) {

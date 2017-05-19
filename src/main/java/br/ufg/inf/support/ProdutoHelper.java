@@ -2,8 +2,8 @@ package br.ufg.inf.support;
 
 import java.util.Scanner;
 
-import static br.ufg.inf.support.ConsoleHelper.getInputDouble;
-import static br.ufg.inf.support.ConsoleHelper.getInputInteiro;
+import static br.ufg.inf.support.MenuHelper.getInputDouble;
+import static br.ufg.inf.support.MenuHelper.getInputInteiro;
 
 public class ProdutoHelper {
 
@@ -26,7 +26,7 @@ public class ProdutoHelper {
     
     public static double getInputValor() {
         System.out.print("\nDigite o valor do produto: ");
-        return ConsoleHelper.getInputDouble();
+        return MenuHelper.getInputDouble();
     }
 
     public static UnidadeDeMedida getInputUnidade() {

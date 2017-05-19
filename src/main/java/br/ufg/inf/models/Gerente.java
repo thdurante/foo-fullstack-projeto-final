@@ -1,11 +1,14 @@
 package br.ufg.inf.models;
 
-import br.ufg.inf.support.ConsoleHelper;
+import br.ufg.inf.support.MenuHelper;
 import br.ufg.inf.support.MenuGerente;
 import br.ufg.inf.support.ProdutoHelper;
 import br.ufg.inf.support.UnidadeDeMedida;
 
-import static br.ufg.inf.support.ConsoleHelper.*;
+import java.util.Collection;
+import java.util.HashMap;
+
+import static br.ufg.inf.support.MenuHelper.*;
 
 public class Gerente extends Empregado {
 
@@ -28,7 +31,7 @@ public class Gerente extends Empregado {
     public void menu() {
         do {
             this.menu.imprimeMenu();
-            opcaoMenu = ConsoleHelper.getInputInteiro();
+            opcaoMenu = MenuHelper.getInputInteiro();
             validaOpcaoMenu(MenuGerente.class, opcaoMenu);
 
             Estoque estoque = this.supermercado.getEstoque();
@@ -38,7 +41,9 @@ public class Gerente extends Empregado {
                     limpaConsole();
                     break;
                 case LISTAR_PRODUTOS:
-                    for (Produto p : estoque.getProdutos()) {
+                    HashMap produtos = estoque.getProdutos();
+                    Collection<Produto> listaProdutos = produtos.values();
+                    for (Produto p : listaProdutos) {
                         System.out.println(p);
                     }
                     limpaConsole();

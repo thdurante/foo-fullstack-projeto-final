@@ -1,25 +1,40 @@
 package br.ufg.inf.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Estoque {
 
-    private List<Produto> produtos;
+    private HashMap<String,Produto> produtos;
 
     public Estoque() {
-        this.produtos = new ArrayList<>();
+        this.produtos = new HashMap<String,Produto>();
     }
 
-    public void adicionaProduto(Produto produto){
-        this.produtos.add(produto);
+    /**
+     * retorna a quantidade de determinado Produto no estoque
+     * @param codigoProduto código do Produto que se deseja saber a quantidade
+     * @return quantidade do Produto no estoque
+     */
+    public double getQtdeProduto(String codigoProduto){
+        double qtdeProduto = 0;
+        Produto produto = produtos.get(codigoProduto);
+        try{
+            qtdeProduto = produto.getQuantidade();
+
+        }catch (NullPointerException e){
+            qtdeProduto = 0;
+        }
+        return qtdeProduto;
     }
 
-    public void removerProduto(Produto produto){
-        this.produtos.remove(produto);
-    }
 
+    /**
+     * vende uma certa quantidade de determinado produto
+     * @param produtoVendido Map contendo o Produto e a quantidade a ser vendida
+     */
     public void vendeProduto(Map.Entry<Produto, Double> produtoVendido) {
         double quantidadeAtual = produtoVendido.getKey().getQuantidade();
         double quantidadeVendida = produtoVendido.getValue();
@@ -27,23 +42,39 @@ public class Estoque {
         produtoVendido.getKey().setQuantidade(quantidadeAtual - quantidadeVendida);
     }
 
-    public Produto getProduto(int indice){
-        return this.produtos.get(indice);
-    }
+    /**
+     * Adiciona produtos no estoque
+     * @param produto tipo de produto a ser adicionado
+     */
+    public void adicionaProduto(Produto produto){
+        String codigoProduto = produto.getCodigo();
+        double qtdeProduto = 0;
+        try{
+            //Se já tem algum produto igual no estoque, apenas incrementa a quantidade
+            qtdeProduto = this.produtos.get(codigoProduto).getQuantidade();
+            qtdeProduto = qtdeProduto + produto.getQuantidade();
+            produto.setQuantidade(qtdeProduto);
+            produtos.replace(codigoProduto, produto);
 
-    public Produto getProduto(String codigo) {
-        Produto produto = null;
-        for (Produto p : this.produtos) {
-            if(p.getCodigo().equals(codigo)) produto = p;
+            //Se não possui nenhum produto igual no estoque, apenas adiciona o produto
+        }catch(NullPointerException e ){
+            produtos.put(codigoProduto, produto);
         }
-        return produto;
+
     }
 
-    public int getIndice(Produto produto){
-        return this.produtos.indexOf(produto);
+    /**
+     * retorna um objeto produto através de seu codigo
+     * @param codigoProduto codigo do produto
+     * @return objeto Produto
+     */
+    public Produto getProduto(String codigoProduto) {
+
+        return produtos.get(codigoProduto);
     }
 
-    public List<Produto> getProdutos() {
+
+    public HashMap<String, Produto> getProdutos() {
         return produtos;
     }
 }
