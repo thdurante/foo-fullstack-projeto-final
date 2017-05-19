@@ -43,11 +43,7 @@ public class Gerente extends Empregado {
                     limpaConsole();
                     break;
                 case LISTAR_PRODUTOS:
-                    HashMap produtos = estoque.getProdutos();
-                    Collection<Produto> listaProdutos = produtos.values();
-                    for (Produto p : listaProdutos) {
-                        System.out.println(p);
-                    }
+                    ProdutoHelper.getListagemDeProdutos(estoque);
                     limpaConsole();
                     break;
                 case ADICIONAR_PRODUTO:
@@ -86,7 +82,7 @@ public class Gerente extends Empregado {
                     break;
 
                 case RELATORIO_ESTOQUE:
-                    Estoque estoqueInicial = supermercado.getEstoqueInicial();
+/*                    Estoque estoqueInicial = supermercado.getEstoqueInicial();
                     HashMap produtosIniciais = estoqueInicial.getProdutos();
                     Collection<Produto> listaProdutosIniciais = produtosIniciais.values();
                     for (Produto p : listaProdutosIniciais) {
@@ -102,7 +98,7 @@ public class Gerente extends Empregado {
                     listaProdutos = produtos.values();
                     for (Produto p : listaProdutos) {
                         System.out.println(p);
-                    }
+                    }*/
                     limpaConsole();
                     break;
 

@@ -61,6 +61,10 @@ public class Teste {
                     supermercado.listaEmpregados();
                     limpaConsole();
                     break;
+                case LISTAR_PRODUTOS:
+                    ProdutoHelper.getListagemDeProdutos(supermercado.getEstoque());
+                    limpaConsole();
+                    break;
                 case CONSULTAR_PRECO_PRODUTO:
                     Estoque estoque = supermercado.getEstoque();
                     String codigoProduto = ProdutoHelper.getInputCodigo();

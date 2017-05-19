@@ -1,5 +1,10 @@
 package br.ufg.inf.support;
 
+import br.ufg.inf.models.Estoque;
+import br.ufg.inf.models.Produto;
+
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import static br.ufg.inf.support.MenuHelper.getInputDouble;
@@ -52,5 +57,13 @@ public class ProdutoHelper {
             return qtd;
         }
         return 0;
+    }
+
+    public static void getListagemDeProdutos(Estoque estoque) {
+        HashMap produtos = estoque.getProdutos();
+        Collection<Produto> listaProdutos = produtos.values();
+        for (Produto p : listaProdutos) {
+            System.out.println(p);
+        }
     }
 }
