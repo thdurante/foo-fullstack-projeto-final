@@ -61,7 +61,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "PRODUTO [" + this.codigo + "] ----------------------" +
-                "\nNome: " + this.nome + " | " +  "R$: " + this.valor + " | " + "Medida: " + this.unidadeDeMedida + " | " + "Qtd: " + this.quantidade;
+        return "\nPRODUTO [" + this.codigo + "] ----------------------" +
+                "\nNome: " + this.nome + " | " +  "R$: " + this.valor + " | " + "Medida: " + this.unidadeDeMedida + " | " + "Qtd: " + this.quantidade + "\n";
     }
 }

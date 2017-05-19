@@ -2,10 +2,10 @@ package br.ufg.inf.models;
 
 import br.ufg.inf.support.ConsoleHelper;
 import br.ufg.inf.support.MenuGerente;
+import br.ufg.inf.support.ProdutoHelper;
 import br.ufg.inf.support.UnidadeDeMedida;
 
-import static br.ufg.inf.support.ConsoleHelper.limpaConsole;
-import static br.ufg.inf.support.ConsoleHelper.validaOpcaoMenu;
+import static br.ufg.inf.support.ConsoleHelper.*;
 
 public class Gerente extends Empregado {
 
@@ -39,13 +39,41 @@ public class Gerente extends Empregado {
                     break;
                 case LISTAR_PRODUTOS:
                     for (Produto p : estoque.getProdutos()) {
-                        System.out.println("\n" + p + "\n");
+                        System.out.println(p);
                     }
                     limpaConsole();
                     break;
                 case ADICIONAR_PRODUTO:
-                    // Ler o código do produto, se achar o produto, setar quantidade a ser adicionada.
-                    // Se não encontrar pelo código, cadastrar todos os outros atributos como um novo produto
+                    String codigoProduto = ProdutoHelper.getInputCodigo();
+                    Produto produto = estoque.getProduto(codigoProduto);
+
+                    if (produto != null) {
+                        System.out.print(produto);
+                        System.out.print("\nQuantidade do produto a ser adicionada " + produto.getUnidadeDeMedida() + ": ");
+
+                        if (produto.getUnidadeDeMedida() == UnidadeDeMedida.QUILO) {
+                            double qtd = getInputDouble();
+                            produto.setQuantidade(produto.getQuantidade() + qtd);
+                        } else if (produto.getUnidadeDeMedida() == UnidadeDeMedida.UNIDADE) {
+                            int qtd = getInputInteiro();
+                            produto.setQuantidade(produto.getQuantidade() + qtd);
+                        }
+                    } else {
+                        System.out.println("\nProduto não encontrado!");
+
+                        String nome;
+                        double valor;
+                        UnidadeDeMedida unidade;
+                        double quantidade;
+
+                        nome = ProdutoHelper.getInputNome();
+                        valor = ProdutoHelper.getInputValor();
+                        unidade = ProdutoHelper.getInputUnidade();
+                        quantidade = ProdutoHelper.getInputQuantidade(unidade);
+
+                        estoque.adicionaProduto(new Produto(nome, valor, unidade, quantidade));
+                        System.out.println("Produto adicionado com sucesso!");
+                    }
 
                     limpaConsole();
                     break;

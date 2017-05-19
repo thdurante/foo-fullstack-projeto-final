@@ -23,6 +23,14 @@ public class Estoque {
         return this.produtos.get(indice);
     }
 
+    public Produto getProduto(String codigo) {
+        Produto produto = null;
+        for (Produto p : this.produtos) {
+            if(p.getCodigo().equals(codigo)) produto = p;
+        }
+        return produto;
+    }
+
     public int getIndice(Produto produto){
         return this.produtos.indexOf(produto);
     }

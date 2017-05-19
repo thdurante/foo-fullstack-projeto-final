@@ -18,6 +18,15 @@ public class ConsoleHelper {
         return scan.nextInt();
     }
 
+    public static double getInputDouble() {
+        while (!scan.hasNextDouble()) {
+            System.out.print("Input inválido! Tente novamente: ");
+            scan.next();
+        }
+
+        return scan.nextDouble();
+    }
+
     public static String getInputString() {
         scan.nextLine();
 
