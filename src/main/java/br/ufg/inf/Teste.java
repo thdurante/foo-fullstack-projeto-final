@@ -40,6 +40,8 @@ public class Teste {
         estoque.adicionaProduto(new Produto("Sabão em pó", 13.99, UnidadeDeMedida.UNIDADE, 50));
         estoque.adicionaProduto(new Produto("Banana", 2.75, UnidadeDeMedida.QUILO, 56.9));
 
+
+        supermercado.setaEstoqueInicial(estoque);
     }
 
     public static void main(String[] args) {

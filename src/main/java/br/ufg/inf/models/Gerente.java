@@ -4,6 +4,7 @@ import br.ufg.inf.support.MenuHelper;
 import br.ufg.inf.support.MenuGerente;
 import br.ufg.inf.support.ProdutoHelper;
 import br.ufg.inf.support.UnidadeDeMedida;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -85,6 +86,24 @@ public class Gerente extends Empregado {
                     break;
 
                 case RELATORIO_ESTOQUE:
+                    Estoque estoqueInicial = supermercado.getEstoqueInicial();
+                    HashMap produtosIniciais = estoqueInicial.getProdutos();
+                    Collection<Produto> listaProdutosIniciais = produtosIniciais.values();
+                    for (Produto p : listaProdutosIniciais) {
+                        System.out.println(p);
+                    }
+                    System.out.println("\n");
+
+
+
+                    System.out.println("ESTOQUE FINAL");
+                    System.out.println("==========================");
+                    produtos = estoque.getProdutos();
+                    listaProdutos = produtos.values();
+                    for (Produto p : listaProdutos) {
+                        System.out.println(p);
+                    }
+                    limpaConsole();
                     break;
 
                 case RELATORIO_VENDAS:
@@ -114,7 +133,7 @@ public class Gerente extends Empregado {
 
                         if(contSemVendas >= listaCaixas.size()){
                             System.out.println("O supermercado ainda não fez nenhuma venda!");
-                            System.out.println("\n\n");
+                            System.out.println("\n");
                         }
 
                     } else{

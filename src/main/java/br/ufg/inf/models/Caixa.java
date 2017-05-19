@@ -55,6 +55,7 @@ public class Caixa {
     }
 
     private void efetuaVenda(TipoVenda tipoVenda) {
+
         if (podeEfetuarVenda()) {
             Venda venda = new Venda(this, tipoVenda);
             String codigo = "";
