@@ -59,8 +59,8 @@ public class Supermercado {
         List<Empregado> empregadosNoCaixa = new ArrayList<>();
 
         for (Caixa caixa : this.getCaixas()) {
-            if (caixa.getEmpregado() != null) {
-                empregadosNoCaixa.add(caixa.getEmpregado());
+            if (caixa.getFuncionario() != null) {
+                empregadosNoCaixa.add(caixa.getFuncionario());
             }
         }
 

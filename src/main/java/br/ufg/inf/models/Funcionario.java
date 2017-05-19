@@ -1,27 +1,34 @@
 package br.ufg.inf.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Funcionario extends Empregado {
 
     private double comissao;
-    private int numVendas = 0;
+    private List<Venda> vendas;
 
     public Funcionario(String nome, double comissao) {
         super(nome);
-        this.numVendas = 0;
         this.comissao = comissao;
+        this.vendas = new ArrayList<>();
     }
 
-    public void addVenda(){
-        this.numVendas = numVendas + 1;
+    public double getSalario() {
+        return super.salarioBase + (this.comissao * this.vendas.size());
     }
 
-    public double getSalario(){
-        return super.salarioBase + (this.comissao * numVendas);
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void adicionaVenda(Venda venda) {
+        this.vendas.add(venda);
     }
 
     public String toString() {
         return "FUNCIONÁRIO [" + this.codigo + "] ----------------------" +
                 "\nNome: " + this.nome + " | Salário base: " + this.salarioBase + " | Salário: " + this.getSalario() +
-                "\nComissão: " + this.comissao + " | Número de vendas: " + this.numVendas;
+                "\nComissão: " + this.comissao + " | Número de vendas: " + this.vendas.size();
     }
 }
