@@ -54,4 +54,18 @@ public class Supermercado {
         }
         return gerente;
     }
+
+    public void listaEmpregados() {
+        if (this.getEmpregados().size() == 0) {
+            System.out.println("O supermercado ainda não possui empregados. Inicialize-o e tente novamente.");
+            return;
+        }
+
+        for (Empregado empregado : this.getEmpregados()) {
+            System.out.println("\n" + (empregado.isGerente() ? "Gerente: " : "Funcionário: ") + empregado.getNome());
+            System.out.println("Código: " + empregado.getCodigo());
+            System.out.println("Salário base: " + empregado.getSalarioBase());
+            System.out.println("Salário: " + empregado.getSalario());
+        }
+    }
 }

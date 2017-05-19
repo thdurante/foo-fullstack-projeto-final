@@ -56,7 +56,7 @@ public class Teste {
                     limpaConsole();
                     break;
                 case LISTAR_EMPREGADOS:
-                    System.out.println("listando empregados");
+                    supermercado.listaEmpregados();
                     limpaConsole();
                     break;
                 case MENU_GERENTE:

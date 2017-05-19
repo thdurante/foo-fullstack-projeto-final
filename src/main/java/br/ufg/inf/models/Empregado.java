@@ -13,5 +13,21 @@ public abstract class Empregado {
         this.nome = nome;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getSalarioBase() {
+        return salarioBase;
+    }
+
     public abstract double getSalario();
+
+    public boolean isGerente() {
+        return this.getClass() == Gerente.class;
+    }
 }
