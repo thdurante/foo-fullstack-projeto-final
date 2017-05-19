@@ -18,6 +18,17 @@ public class ConsoleHelper {
         return scan.nextInt();
     }
 
+    public static String getInputString() {
+        scan.nextLine();
+
+        while (!scan.hasNextLine()) {
+            System.out.print("Input inválido! Tente novamente: ");
+            scan.next();
+        }
+
+        return scan.nextLine();
+    }
+
     public static void validaOpcaoMenu(Class<?> clazz, int opcao) {
         String opcaoInvalida = "Opção inválida! Tente novamente: ";
 

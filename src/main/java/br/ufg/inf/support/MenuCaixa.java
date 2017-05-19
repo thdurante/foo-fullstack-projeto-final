@@ -5,7 +5,8 @@ public class MenuCaixa extends Menu {
     public enum OpcaoCaixa {
         VOLTAR(0),
         VENDER_CARTAO(1),
-        VENDER_DINHEIRO(2);
+        VENDER_DINHEIRO(2),
+        ALOCAR_FUNCIONARIO(3);
 
         private int codigo;
 

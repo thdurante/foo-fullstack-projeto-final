@@ -21,12 +21,12 @@ public class Gerente extends Empregado {
         this.menu = new MenuGerente();
     }
 
-    public double getSalario(){
+    public double getSalario() {
         return super.salarioBase + this.bonus;
     }
 
-    public void menu(){
-        do{
+    public void menu() {
+        do {
             this.menu.imprimeMenu();
             opcaoMenu = ConsoleHelper.getInputInteiro();
             validaOpcaoMenu(MenuGerente.class, opcaoMenu);
@@ -50,7 +50,7 @@ public class Gerente extends Empregado {
                     limpaConsole();
                     break;
             }
-        }while(opcaoMenu != 0);
+        } while (opcaoMenu != 0);
     }
 
     public String toString() {

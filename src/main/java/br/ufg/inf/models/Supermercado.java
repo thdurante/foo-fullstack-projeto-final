@@ -50,9 +50,21 @@ public class Supermercado {
     public Gerente getGerente() {
         Gerente gerente = null;
         for (Empregado e : this.empregados) {
-            if(e.getClass() == Gerente.class) gerente = (Gerente) e;
+            if (e instanceof Gerente) gerente = (Gerente) e;
         }
         return gerente;
+    }
+
+    public List<Empregado> getEmpregadosNoCaixa() {
+        List<Empregado> empregadosNoCaixa = new ArrayList<>();
+
+        for (Caixa caixa : this.getCaixas()) {
+            if (caixa.getEmpregado() != null) {
+                empregadosNoCaixa.add(caixa.getEmpregado());
+            }
+        }
+
+        return empregadosNoCaixa;
     }
 
     public void listaEmpregados() {
@@ -76,5 +88,17 @@ public class Supermercado {
         }
 
         return caixaEncontrado;
+    }
+
+    public Empregado buscaEmpregadoPeloCodigo(String codigo) {
+        Empregado empregadoEncontrado = null;
+
+        for (Empregado empregado : this.getEmpregados()) {
+            if (empregado.getCodigo().equals(codigo)) {
+                empregadoEncontrado = empregado;
+            }
+        }
+
+        return empregadoEncontrado;
     }
 }

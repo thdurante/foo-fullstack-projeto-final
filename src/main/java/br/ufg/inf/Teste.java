@@ -27,9 +27,9 @@ public class Teste {
         supermercado.adicionaEmpregado(new Funcionario("Funcionário 5", 0.2));
 
         // Caixas
-        supermercado.adicionaCaixa(new Caixa(1, funcionarioCaixa1));
-        supermercado.adicionaCaixa(new Caixa(2, funcionarioCaixa2));
-        supermercado.adicionaCaixa(new Caixa(3, funcionarioCaixa3));
+        supermercado.adicionaCaixa(new Caixa(1, funcionarioCaixa1, supermercado));
+        supermercado.adicionaCaixa(new Caixa(2, funcionarioCaixa2, supermercado));
+        supermercado.adicionaCaixa(new Caixa(3, funcionarioCaixa3, supermercado));
 
         // Produtos
         Estoque estoque = supermercado.getEstoque();
