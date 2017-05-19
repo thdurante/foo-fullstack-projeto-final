@@ -19,6 +19,10 @@ public class Caixa {
         this.menu = new MenuCaixa();
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
     public void fecharCaixa(){
         this.aberto = false;
     }

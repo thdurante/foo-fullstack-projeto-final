@@ -5,9 +5,7 @@ import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuInicial;
 import br.ufg.inf.support.UnidadeDeMedida;
 
-import static br.ufg.inf.support.ConsoleHelper.getInputInteiro;
-import static br.ufg.inf.support.ConsoleHelper.limpaConsole;
-import static br.ufg.inf.support.ConsoleHelper.validaOpcaoMenu;
+import static br.ufg.inf.support.ConsoleHelper.*;
 
 public class Teste {
 
@@ -82,8 +80,19 @@ public class Teste {
                     gerente.menu();
                     break;
                 case MENU_CAIXA:
-                    System.out.println("menu caixa");
+                    System.out.print("Informe o número do caixa: ");
+                    int numeroCaixa = getInputInteiro();
+                    Caixa caixa = supermercado.buscaCaixaPeloNumero(numeroCaixa);
+
+                    if (caixa == null) {
+                        System.out.println("Não foi encontrado nenhum caixa com o número informado. " +
+                                "\nPor favor, verifique o número e tente novamente.");
+                        limpaConsole();
+                        break;
+                    }
+
                     limpaConsole();
+                    caixa.menu();
                     break;
             }
         } while (opcaoMenuInicial != 0);

@@ -65,4 +65,16 @@ public class Supermercado {
             System.out.println("\n" + empregado + "\n");
         }
     }
+
+    public Caixa buscaCaixaPeloNumero(int numeroCaixa) {
+        Caixa caixaEncontrado = null;
+
+        for (Caixa caixa : this.getCaixas()) {
+            if (caixa.getNumero() == numeroCaixa) {
+                caixaEncontrado = caixa;
+            }
+        }
+
+        return caixaEncontrado;
+    }
 }
