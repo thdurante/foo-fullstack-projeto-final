@@ -2,6 +2,7 @@ package br.ufg.inf.models;
 
 import br.ufg.inf.support.ConsoleHelper;
 import br.ufg.inf.support.MenuGerente;
+import br.ufg.inf.support.UnidadeDeMedida;
 
 import static br.ufg.inf.support.ConsoleHelper.limpaConsole;
 import static br.ufg.inf.support.ConsoleHelper.validaOpcaoMenu;
@@ -29,8 +30,26 @@ public class Gerente extends Empregado {
             this.menu.imprimeMenu();
             opcaoMenu = ConsoleHelper.getInputInteiro();
             validaOpcaoMenu(MenuGerente.class, opcaoMenu);
-            limpaConsole();
 
+            Estoque estoque = this.supermercado.getEstoque();
+
+            switch (MenuGerente.Opcao.getOpcaoFromCodigo(opcaoMenu)) {
+                case VOLTAR:
+                    limpaConsole();
+                    break;
+                case LISTAR_PRODUTOS:
+                    for (Produto p : estoque.getProdutos()) {
+                        System.out.println("\n" + p + "\n");
+                    }
+                    limpaConsole();
+                    break;
+                case ADICIONAR_PRODUTO:
+                    // Ler o código do produto, se achar o produto, setar quantidade a ser adicionada.
+                    // Se não encontrar pelo código, cadastrar todos os outros atributos como um novo produto
+
+                    limpaConsole();
+                    break;
+            }
         }while(opcaoMenu != 0);
     }
 }

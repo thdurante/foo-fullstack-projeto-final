@@ -3,8 +3,7 @@ package br.ufg.inf;
 import br.ufg.inf.models.*;
 import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuInicial;
-
-import java.util.Scanner;
+import br.ufg.inf.support.UnidadeDeMedida;
 
 import static br.ufg.inf.support.ConsoleHelper.getInputInteiro;
 import static br.ufg.inf.support.ConsoleHelper.limpaConsole;
@@ -20,15 +19,27 @@ public class Teste {
         Funcionario funcionarioCaixa1 = new Funcionario("Funcionário 1", 0.2);
         Funcionario funcionarioCaixa2 = new Funcionario("Funcionário 2", 0.2);
         Funcionario funcionarioCaixa3 = new Funcionario("Funcionário 3", 0.2);
+
+        // Empregados
         supermercado.adicionaEmpregado(new Gerente("Gerente", 2570.32, supermercado));
         supermercado.adicionaEmpregado(funcionarioCaixa1);
         supermercado.adicionaEmpregado(funcionarioCaixa2);
         supermercado.adicionaEmpregado(funcionarioCaixa3);
         supermercado.adicionaEmpregado(new Funcionario("Funcionário 4", 0.2));
         supermercado.adicionaEmpregado(new Funcionario("Funcionário 5", 0.2));
+
+        // Caixas
         supermercado.adicionaCaixa(new Caixa(1, funcionarioCaixa1));
         supermercado.adicionaCaixa(new Caixa(2, funcionarioCaixa2));
         supermercado.adicionaCaixa(new Caixa(3, funcionarioCaixa3));
+
+        // Produtos
+        Estoque estoque = supermercado.getEstoque();
+        estoque.adicionaProduto(new Produto("Shampoo", 12.4, UnidadeDeMedida.UNIDADE, 100));
+        estoque.adicionaProduto(new Produto("Laranja", 4.66, UnidadeDeMedida.QUILO, 24));
+        estoque.adicionaProduto(new Produto("Sabão em pó", 13.99, UnidadeDeMedida.UNIDADE, 50));
+        estoque.adicionaProduto(new Produto("Azeitona em conserva", 17.5, UnidadeDeMedida.UNIDADE, 13));
+        estoque.adicionaProduto(new Produto("Banana", 2.75, UnidadeDeMedida.QUILO, 56.9));
     }
 
     public static void main(String[] args) {
@@ -56,7 +67,7 @@ public class Teste {
                     limpaConsole();
                     break;
                 case LISTAR_EMPREGADOS:
-                    supermercado.listaEmpregados();
+                    System.out.println("listando empregados");
                     limpaConsole();
                     break;
                 case MENU_GERENTE:
@@ -73,6 +84,9 @@ public class Teste {
                 case MENU_CAIXA:
                     System.out.println("menu caixa");
                     limpaConsole();
+                    Empregado e1 = new Funcionario("Paulo", 400);
+                    Caixa c1 = new Caixa(1, e1);
+                    c1.menu();
                     break;
             }
         } while (opcaoMenuInicial != 0);

@@ -58,4 +58,10 @@ public class Produto {
     public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
+
+    @Override
+    public String toString() {
+        return "PRODUTO [" + this.codigo + "] ----------------------" +
+                "\nNome: " + this.nome + " | " +  "R$: " + this.valor + " | " + "Medida: " + this.unidadeDeMedida + " | " + "Qtd: " + this.quantidade;
+    }
 }

@@ -11,7 +11,7 @@ public class Estoque {
         this.produtos = new ArrayList<>();
     }
 
-    public void adicionarProduto(Produto produto){
+    public void adicionaProduto(Produto produto){
         this.produtos.add(produto);
     }
 
@@ -25,5 +25,9 @@ public class Estoque {
 
     public int getIndice(Produto produto){
         return this.produtos.indexOf(produto);
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 }
