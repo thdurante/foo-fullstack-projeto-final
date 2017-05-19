@@ -67,14 +67,21 @@ public class Caixa {
 
                 Produto produto = this.supermercado.getEstoque().getProduto(codigo);
 
-                if (produto == null) {
-                    System.out.println("O produto com o código informado não foi encontrado. Tente novamente.");
+                while (produto == null || produto.getQuantidade() == 0) {
+                    System.out.println("O produto com o código informado não está disponível. Tente novamente.");
                     codigo = ProdutoHelper.getInputCodigo();
                     produto = this.supermercado.getEstoque().getProduto(codigo);
                 }
 
                 UnidadeDeMedida unidade = produto.getUnidadeDeMedida();
                 double quantidade = ProdutoHelper.getInputQuantidade(unidade);
+
+                while (produto.getQuantidade() < quantidade) {
+                    System.out.println("O máximo de unidades/quilos disponíveis para o produto é " + produto.getQuantidade());
+                    quantidade = ProdutoHelper.getInputQuantidade(unidade);
+                }
+
+                supermercado.getEstoque().vendeProduto(produto, quantidade);
                 venda.adicionaProduto(produto, quantidade);
             } while (!codigo.equals(""));
 

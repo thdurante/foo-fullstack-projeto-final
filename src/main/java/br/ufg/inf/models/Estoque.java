@@ -33,13 +33,13 @@ public class Estoque {
 
     /**
      * vende uma certa quantidade de determinado produto
-     * @param produtoVendido Map contendo o Produto e a quantidade a ser vendida
+     * @param produto produto a ser vendido
+     * @param quantidadeVendida quantidade a ser deduzida do total do produto
      */
-    public void vendeProduto(Map.Entry<Produto, Double> produtoVendido) {
-        double quantidadeAtual = produtoVendido.getKey().getQuantidade();
-        double quantidadeVendida = produtoVendido.getValue();
+    public void vendeProduto(Produto produto, double quantidadeVendida) {
+        double quantidadeAtual = produto.getQuantidade();
 
-        produtoVendido.getKey().setQuantidade(quantidadeAtual - quantidadeVendida);
+        produto.setQuantidade(quantidadeAtual - quantidadeVendida);
     }
 
     /**

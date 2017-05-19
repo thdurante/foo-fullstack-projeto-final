@@ -27,7 +27,6 @@ public class Venda {
     public void finaliza() {
         for (Map.Entry<Produto, Double> produtoVendido : this.produtosVendidos.entrySet()) {
             this.valorTotal += produtoVendido.getKey().getValor() * produtoVendido.getValue();
-            this.caixa.getSupermercado().getEstoque().vendeProduto(produtoVendido);
         }
     }
 
