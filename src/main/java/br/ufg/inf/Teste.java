@@ -67,7 +67,7 @@ public class Teste {
                     limpaConsole();
                     break;
                 case LISTAR_EMPREGADOS:
-                    System.out.println("listando empregados");
+                    supermercado.listaEmpregados();
                     limpaConsole();
                     break;
                 case MENU_GERENTE:
@@ -84,9 +84,6 @@ public class Teste {
                 case MENU_CAIXA:
                     System.out.println("menu caixa");
                     limpaConsole();
-                    Empregado e1 = new Funcionario("Paulo", 400);
-                    Caixa c1 = new Caixa(1, e1);
-                    c1.menu();
                     break;
             }
         } while (opcaoMenuInicial != 0);

@@ -18,4 +18,10 @@ public class Funcionario extends Empregado {
     public double getSalario(){
         return super.salarioBase + (this.comissao * numVendas);
     }
+
+    public String toString() {
+        return "FUNCIONÁRIO [" + this.codigo + "] ----------------------" +
+                "\nNome: " + this.nome + " | Salário base: " + this.salarioBase + " | Salário: " + this.getSalario() +
+                "\nComissão: " + this.comissao + " | Número de vendas: " + this.numVendas;
+    }
 }

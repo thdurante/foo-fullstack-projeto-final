@@ -52,4 +52,10 @@ public class Gerente extends Empregado {
             }
         }while(opcaoMenu != 0);
     }
+
+    public String toString() {
+        return "GERENTE [" + this.codigo + "] ----------------------" +
+                "\nNome: " + this.nome + " | Salário base: " + this.salarioBase + " | Salário: " + this.getSalario() +
+                "\nBônus: " + this.bonus;
+    }
 }

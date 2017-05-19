@@ -62,10 +62,7 @@ public class Supermercado {
         }
 
         for (Empregado empregado : this.getEmpregados()) {
-            System.out.println("\n" + (empregado.isGerente() ? "Gerente: " : "Funcionário: ") + empregado.getNome());
-            System.out.println("Código: " + empregado.getCodigo());
-            System.out.println("Salário base: " + empregado.getSalarioBase());
-            System.out.println("Salário: " + empregado.getSalario());
+            System.out.println("\n" + empregado + "\n");
         }
     }
 }

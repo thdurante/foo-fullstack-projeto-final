@@ -26,8 +26,4 @@ public abstract class Empregado {
     }
 
     public abstract double getSalario();
-
-    public boolean isGerente() {
-        return this.getClass() == Gerente.class;
-    }
 }
