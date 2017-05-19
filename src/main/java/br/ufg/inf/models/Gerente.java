@@ -4,10 +4,6 @@ import br.ufg.inf.support.MenuHelper;
 import br.ufg.inf.support.MenuGerente;
 import br.ufg.inf.support.ProdutoHelper;
 import br.ufg.inf.support.UnidadeDeMedida;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 import static br.ufg.inf.support.MenuHelper.*;
@@ -43,7 +39,7 @@ public class Gerente extends Empregado {
                     limpaConsole();
                     break;
                 case LISTAR_PRODUTOS:
-                    ProdutoHelper.getListagemDeProdutos(estoque);
+                    System.out.println(ProdutoHelper.getListagemDeProdutos(estoque));
                     limpaConsole();
                     break;
                 case ADICIONAR_PRODUTO:
@@ -82,23 +78,11 @@ public class Gerente extends Empregado {
                     break;
 
                 case RELATORIO_ESTOQUE:
-/*                    Estoque estoqueInicial = supermercado.getEstoqueInicial();
-                    HashMap produtosIniciais = estoqueInicial.getProdutos();
-                    Collection<Produto> listaProdutosIniciais = produtosIniciais.values();
-                    for (Produto p : listaProdutosIniciais) {
-                        System.out.println(p);
-                    }
-                    System.out.println("\n");
+                    System.out.println("\n\n========================== ESTOQUE INICIAL ==========================");
+                    System.out.println(supermercado.getEstoqueInicial());
 
-
-
-                    System.out.println("ESTOQUE FINAL");
-                    System.out.println("==========================");
-                    produtos = estoque.getProdutos();
-                    listaProdutos = produtos.values();
-                    for (Produto p : listaProdutos) {
-                        System.out.println(p);
-                    }*/
+                    System.out.println("\n\n=========================== ESTOQUE FINAL ===========================");
+                    System.out.println(ProdutoHelper.getListagemDeProdutos(estoque));
                     limpaConsole();
                     break;
 

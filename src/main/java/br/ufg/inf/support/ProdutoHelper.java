@@ -59,11 +59,15 @@ public class ProdutoHelper {
         return 0;
     }
 
-    public static void getListagemDeProdutos(Estoque estoque) {
+    public static String getListagemDeProdutos(Estoque estoque) {
         HashMap produtos = estoque.getProdutos();
         Collection<Produto> listaProdutos = produtos.values();
+        String listagemProdutos = "";
+
         for (Produto p : listaProdutos) {
-            System.out.println(p);
+            listagemProdutos += p;
         }
+
+        return listagemProdutos;
     }
 }

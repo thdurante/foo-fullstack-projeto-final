@@ -41,8 +41,8 @@ public class Teste {
         estoque.adicionaProduto(new Produto("Sabão em pó", 13.99, UnidadeDeMedida.UNIDADE, 50));
         estoque.adicionaProduto(new Produto("Banana", 2.75, UnidadeDeMedida.QUILO, 56.9));
 
-
-        supermercado.setaEstoqueInicial(estoque);
+        // Estoque inicial
+        supermercado.setEstoqueInicial(ProdutoHelper.getListagemDeProdutos(estoque));
     }
 
     public static void main(String[] args) {
@@ -62,7 +62,7 @@ public class Teste {
                     limpaConsole();
                     break;
                 case LISTAR_PRODUTOS:
-                    ProdutoHelper.getListagemDeProdutos(supermercado.getEstoque());
+                    System.out.println(ProdutoHelper.getListagemDeProdutos(supermercado.getEstoque()));
                     limpaConsole();
                     break;
                 case CONSULTAR_PRECO_PRODUTO:

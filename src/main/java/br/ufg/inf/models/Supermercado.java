@@ -8,7 +8,7 @@ public class Supermercado {
     private String cnpj;
     private String nome;
     private Estoque estoque;
-    private Estoque estoqueInicial;
+    private String estoqueInicial;
     private List<Empregado> empregados;
     private List<Caixa> caixas;
 
@@ -103,12 +103,11 @@ public class Supermercado {
         return empregadoEncontrado;
     }
 
-    public void setaEstoqueInicial(Estoque estoque){
-        final Estoque estoqueInicial = estoque;
-        this.estoqueInicial = estoqueInicial;
+    public String getEstoqueInicial() {
+        return estoqueInicial;
     }
 
-    public Estoque getEstoqueInicial() {
-        return estoqueInicial;
+    public void setEstoqueInicial(String estoqueInicial) {
+        this.estoqueInicial = estoqueInicial;
     }
 }
