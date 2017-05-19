@@ -5,7 +5,9 @@ public class MenuGerente extends Menu {
     public enum Opcao {
         VOLTAR(0),
         LISTAR_PRODUTOS(1),
-        ADICIONAR_PRODUTO(2);
+        ADICIONAR_PRODUTO(2),
+        RELATORIO_ESTOQUE(3),
+        RELATORIO_VENDAS(4);
 
         private int codigo;
 
