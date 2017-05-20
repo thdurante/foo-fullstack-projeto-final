@@ -1,6 +1,7 @@
 package br.ufg.inf.models;
 
 import br.ufg.inf.support.*;
+import br.ufg.inf.support.exceptions.VendaCanceladaException;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -57,63 +58,65 @@ public class Caixa {
     }
 
     private void efetuaVenda(TipoVenda tipoVenda) {
+        try {
+            if (podeEfetuarVenda()) {
+                Venda venda = new Venda(this, tipoVenda);
+                String codigo = "";
 
-        if (podeEfetuarVenda()) {
-            Venda venda = new Venda(this, tipoVenda);
-            String codigo = "";
-
-            do {
-                codigo = ProdutoHelper.getInputCodigo();
-
-                if (codigo.equals("")) break;
-
-                Produto produto = this.supermercado.getEstoque().getProduto(codigo);
-
-                while (produto == null || produto.getQuantidade() == 0) {
-                    System.out.println("O produto com o código informado não está disponível. Tente novamente.");
-                    System.out.println("Para encerrar a venda, aperte ENTER");
+                do {
                     codigo = ProdutoHelper.getInputCodigo();
 
                     if (codigo.equals("")) break;
 
-                    produto = this.supermercado.getEstoque().getProduto(codigo);
-                }
+                    Produto produto = this.supermercado.getEstoque().getProduto(codigo);
 
-                if (codigo.equals("")) break;
+                    while (produto == null || produto.getQuantidade() == 0) {
+                        System.out.println("O produto com o código informado não está disponível. Tente novamente.");
+                        System.out.println("Para encerrar a venda, aperte ENTER");
+                        codigo = ProdutoHelper.getInputCodigo();
 
-                UnidadeDeMedida unidade = produto.getUnidadeDeMedida();
-                double quantidade = ProdutoHelper.getInputQuantidade(unidade);
+                        if (codigo.equals("")) break;
 
-                while (produto.getQuantidade() < quantidade) {
-                    System.out.println("O máximo de unidades/quilos disponíveis para o produto é " + produto.getQuantidade());
-                    System.out.println("Para encerrar a venda, digite -1");
-                    quantidade = ProdutoHelper.getInputQuantidade(unidade);
+                        produto = this.supermercado.getEstoque().getProduto(codigo);
+                    }
+
+                    if (codigo.equals("")) break;
+
+                    UnidadeDeMedida unidade = produto.getUnidadeDeMedida();
+                    double quantidade = ProdutoHelper.getInputQuantidade(unidade);
+
+                    while (produto.getQuantidade() < quantidade) {
+                        System.out.println("O máximo de unidades/quilos disponíveis para o produto é " + produto.getQuantidade());
+                        System.out.println("Para encerrar a venda, digite -1");
+                        quantidade = ProdutoHelper.getInputQuantidade(unidade);
+
+                        if (quantidade == -1) break;
+                    }
 
                     if (quantidade == -1) break;
+
+                    supermercado.getEstoque().vendeProduto(produto, quantidade);
+                    venda.adicionaProduto(produto, quantidade);
+                } while (!codigo.equals(""));
+
+                venda.finaliza();
+
+                if (venda.getValorTotal() == 0) {
+                    throw new VendaCanceladaException();
                 }
 
-                if (quantidade == -1) break;
+                this.adicionaVenda(venda);
+                this.funcionario.adicionaVenda(venda);
+                System.out.println("O valor total da venda foi de " + formatter.format(venda.getValorTotal()));
 
-                supermercado.getEstoque().vendeProduto(produto, quantidade);
-                venda.adicionaProduto(produto, quantidade);
-            } while (!codigo.equals(""));
-
-            venda.finaliza();
-
-            if (venda.getValorTotal() == 0) {
-                System.out.println("A venda foi cancelada pelo usuário.");
-                return;
+                if (tipoVenda == DINHEIRO) {
+                    System.out.print("Informe a quantia paga pelo cliente: ");
+                    double quantiaPagaCliente = getInputDouble();
+                    calculaTroco(venda, quantiaPagaCliente);
+                }
             }
-
-            this.adicionaVenda(venda);
-            this.funcionario.adicionaVenda(venda);
-            System.out.println("O valor total da venda foi de " + formatter.format(venda.getValorTotal()));
-
-            if (tipoVenda == DINHEIRO) {
-                System.out.print("Informe a quantia paga pelo cliente: ");
-                double quantiaPagaCliente = getInputDouble();
-                calculaTroco(venda, quantiaPagaCliente);
-            }
+        } catch (VendaCanceladaException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 
