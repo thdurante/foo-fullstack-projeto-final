@@ -69,23 +69,40 @@ public class Caixa {
 
                 while (produto == null || produto.getQuantidade() == 0) {
                     System.out.println("O produto com o código informado não está disponível. Tente novamente.");
+                    System.out.println("Para encerrar a venda, aperte ENTER");
                     codigo = ProdutoHelper.getInputCodigo();
+
+                    if (codigo.equals("")) break;
+
                     produto = this.supermercado.getEstoque().getProduto(codigo);
                 }
+
+                if (codigo.equals("")) break;
 
                 UnidadeDeMedida unidade = produto.getUnidadeDeMedida();
                 double quantidade = ProdutoHelper.getInputQuantidade(unidade);
 
                 while (produto.getQuantidade() < quantidade) {
                     System.out.println("O máximo de unidades/quilos disponíveis para o produto é " + produto.getQuantidade());
+                    System.out.println("Para encerrar a venda, digite -1");
                     quantidade = ProdutoHelper.getInputQuantidade(unidade);
+
+                    if (quantidade == -1) break;
                 }
+
+                if (quantidade == -1) break;
 
                 supermercado.getEstoque().vendeProduto(produto, quantidade);
                 venda.adicionaProduto(produto, quantidade);
             } while (!codigo.equals(""));
 
             venda.finaliza();
+
+            if (venda.getValorTotal() == 0) {
+                System.out.println("A venda foi cancelada pelo usuário.");
+                return;
+            }
+
             this.adicionaVenda(venda);
             this.funcionario.adicionaVenda(venda);
             System.out.println("O valor total da venda foi de R$ " + venda.getValorTotal());
