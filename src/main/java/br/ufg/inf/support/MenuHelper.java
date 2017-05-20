@@ -1,5 +1,7 @@
 package br.ufg.inf.support;
 
+import br.ufg.inf.support.exceptions.InputInvalidoException;
+
 import java.util.Scanner;
 
 public class MenuHelper {
@@ -11,8 +13,12 @@ public class MenuHelper {
 
     public static int getInputInteiro() {
         while (!scan.hasNextInt()) {
-            System.out.print("Input inválido! Tente novamente: ");
-            scan.next();
+            try {
+                if (!scan.hasNextInt()) throw new InputInvalidoException();
+            } catch (InputInvalidoException e) {
+                System.out.println(e.getMessage());
+                scan.next();
+            }
         }
 
         return scan.nextInt();
@@ -20,8 +26,12 @@ public class MenuHelper {
 
     public static double getInputDouble() {
         while (!scan.hasNextDouble()) {
-            System.out.print("Input inválido! Tente novamente: ");
-            scan.next();
+            try {
+                if (!scan.hasNextDouble()) throw new InputInvalidoException();
+            } catch (InputInvalidoException e) {
+                System.out.println(e.getMessage());
+                scan.next();
+            }
         }
 
         return scan.nextDouble();
