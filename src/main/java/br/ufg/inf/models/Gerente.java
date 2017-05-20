@@ -4,6 +4,7 @@ import br.ufg.inf.support.MenuHelper;
 import br.ufg.inf.support.MenuGerente;
 import br.ufg.inf.support.ProdutoHelper;
 import br.ufg.inf.support.UnidadeDeMedida;
+
 import java.util.List;
 
 import static br.ufg.inf.support.MenuHelper.*;
@@ -76,7 +77,6 @@ public class Gerente extends Empregado {
 
                     limpaConsole();
                     break;
-
                 case RELATORIO_ESTOQUE:
                     System.out.println("\n\n========================== ESTOQUE INICIAL ==========================");
                     System.out.println(supermercado.getEstoqueInicial());
@@ -85,38 +85,37 @@ public class Gerente extends Empregado {
                     System.out.println(ProdutoHelper.getListagemDeProdutos(estoque));
                     limpaConsole();
                     break;
-
                 case RELATORIO_VENDAS:
                     List<Caixa> listaCaixas = supermercado.getCaixas();
                     int contSemVendas = 0;
-                    if(listaCaixas.size() > 0){
 
-                        for(Caixa cx: listaCaixas){
+                    if (listaCaixas.size() > 0) {
+
+                        for (Caixa cx : listaCaixas) {
                             System.out.println("\n\n");
 
                             List<Venda> listaVendas = cx.getVendas();
-                            if(listaVendas.size() > 0){
-                                System.out.println("VENDAS NO CAIXA "+cx.getNumero() );
+                            if (listaVendas.size() > 0) {
+                                System.out.println("VENDAS NO CAIXA " + cx.getNumero());
                                 System.out.println("========================================");
-                                for(Venda venda: listaVendas){
-                                    System.out.println("Responsável pela venda: "+cx.getFuncionario().getNome());
-                                    System.out.println("Pagamento: "+venda.getTipoVenda());
-                                    System.out.println("Valor: R$"+ venda.getValorTotal());
-                                    System.out.println("Data: "+ venda.getData());
+                                for (Venda venda : listaVendas) {
+                                    System.out.println("Responsável pela venda: " + cx.getFuncionario().getNome());
+                                    System.out.println("Pagamento: " + venda.getTipoVenda());
+                                    System.out.println("Valor: R$" + venda.getValorTotal());
+                                    System.out.println("Data: " + venda.getData());
                                     System.out.println("----------------------------------------");
                                 }
-                            }else{
+                            } else {
                                 contSemVendas++;
                             }
 
                         }
 
-                        if(contSemVendas >= listaCaixas.size()){
+                        if (contSemVendas >= listaCaixas.size()) {
                             System.out.println("O supermercado ainda não fez nenhuma venda!");
                             System.out.println("\n");
                         }
-
-                    } else{
+                    } else {
                         System.out.println("O supermercado ainda não possui caixas");
                     }
 

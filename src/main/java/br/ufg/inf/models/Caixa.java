@@ -2,6 +2,7 @@ package br.ufg.inf.models;
 
 import br.ufg.inf.support.*;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Caixa {
     private List<Venda> vendas;
     private MenuCaixa menu;
     private int opcaoMenu;
+    private static final NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
     public Caixa(int numero, Funcionario funcionario, Supermercado supermercado) {
         this.numero = numero;
@@ -105,7 +107,7 @@ public class Caixa {
 
             this.adicionaVenda(venda);
             this.funcionario.adicionaVenda(venda);
-            System.out.println("O valor total da venda foi de R$ " + venda.getValorTotal());
+            System.out.println("O valor total da venda foi de " + formatter.format(venda.getValorTotal()));
 
             if (tipoVenda == DINHEIRO) {
                 System.out.print("Informe a quantia paga pelo cliente: ");
@@ -118,7 +120,7 @@ public class Caixa {
     private void calculaTroco(Venda venda, double quantiaPagaCliente) {
         double custoTotalProdutos = venda.getValorTotal();
         double troco = quantiaPagaCliente - custoTotalProdutos;
-        System.out.println("O valor do troco é R$" + troco);
+        System.out.println("O valor do troco é " + formatter.format(troco));
     }
 
     public void menu() {
