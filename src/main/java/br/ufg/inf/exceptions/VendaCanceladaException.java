@@ -1,4 +1,4 @@
-package br.ufg.inf.support.exceptions;
+package br.ufg.inf.exceptions;
 
 public class VendaCanceladaException extends RuntimeException {
 

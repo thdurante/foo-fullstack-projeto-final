@@ -1,4 +1,4 @@
-package br.ufg.inf.support;
+package br.ufg.inf.models;
 
 import static br.ufg.inf.support.MenuCaixa.OpcaoCaixa.VENDER_CARTAO;
 import static br.ufg.inf.support.MenuCaixa.OpcaoCaixa.VENDER_DINHEIRO;

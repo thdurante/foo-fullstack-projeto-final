@@ -1,14 +1,12 @@
-package br.ufg.inf.support;
+package br.ufg.inf.helpers;
 
 import br.ufg.inf.models.Estoque;
 import br.ufg.inf.models.Produto;
+import br.ufg.inf.models.UnidadeDeMedida;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
-
-import static br.ufg.inf.support.MenuHelper.getInputDouble;
-import static br.ufg.inf.support.MenuHelper.getInputInteiro;
 
 public class ProdutoHelper {
 
@@ -37,7 +35,7 @@ public class ProdutoHelper {
     public static UnidadeDeMedida getInputUnidade() {
         System.out.print("\nDigite a unidade de medida do produto ['QUILO' ou 'UNIDADE']: ");
         String unidade = scan.nextLine();
-        while(unidade.equals("") || !unidade.equals("UNIDADE") || unidade.equals("QUILO")) {
+        while(unidade.equals("") || !(unidade.equals("UNIDADE") || unidade.equals("QUILO"))) {
             System.out.println("Não pode ser vazio! Valores aceitos ['QUILO' ou 'UNIDADE']: ");
 
             unidade = scan.nextLine();
@@ -50,10 +48,10 @@ public class ProdutoHelper {
         System.out.print("\nDigite a quantidade do produto: ");
 
         if (unidade == UnidadeDeMedida.QUILO) {
-            double qtd = getInputDouble();
+            double qtd = MenuHelper.getInputDouble();
             return qtd;
         } else if (unidade == UnidadeDeMedida.UNIDADE) {
-            int qtd = getInputInteiro();
+            int qtd = MenuHelper.getInputInteiro();
             return qtd;
         }
         return 0;

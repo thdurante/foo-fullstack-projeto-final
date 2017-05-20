@@ -1,15 +1,14 @@
 package br.ufg.inf.models;
 
-import br.ufg.inf.support.MenuHelper;
+import br.ufg.inf.helpers.MenuHelper;
 import br.ufg.inf.support.MenuGerente;
-import br.ufg.inf.support.ProdutoHelper;
-import br.ufg.inf.support.UnidadeDeMedida;
-import br.ufg.inf.support.exceptions.SemMovimentacaoException;
-import br.ufg.inf.support.exceptions.SemCaixaException;
+import br.ufg.inf.helpers.ProdutoHelper;
+import br.ufg.inf.exceptions.SemMovimentacaoException;
+import br.ufg.inf.exceptions.SemCaixaException;
 
 import java.util.List;
 
-import static br.ufg.inf.support.MenuHelper.*;
+import static br.ufg.inf.helpers.MenuHelper.*;
 
 public class Gerente extends Empregado {
 

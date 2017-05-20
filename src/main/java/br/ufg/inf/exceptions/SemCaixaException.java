@@ -1,6 +1,4 @@
-package br.ufg.inf.support.exceptions;
-
-import br.ufg.inf.models.Supermercado;
+package br.ufg.inf.exceptions;
 
 /**
  * Created by paulo on 20/05/17.

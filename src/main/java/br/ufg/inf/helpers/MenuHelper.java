@@ -1,6 +1,9 @@
-package br.ufg.inf.support;
+package br.ufg.inf.helpers;
 
-import br.ufg.inf.support.exceptions.InputInvalidoException;
+import br.ufg.inf.support.MenuCaixa;
+import br.ufg.inf.support.MenuGerente;
+import br.ufg.inf.support.MenuInicial;
+import br.ufg.inf.exceptions.InputInvalidoException;
 
 import java.util.Scanner;
 

@@ -1,15 +1,17 @@
 package br.ufg.inf.models;
 
 import br.ufg.inf.support.*;
-import br.ufg.inf.support.exceptions.VendaCanceladaException;
+import br.ufg.inf.exceptions.VendaCanceladaException;
+import br.ufg.inf.helpers.MenuHelper;
+import br.ufg.inf.helpers.ProdutoHelper;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static br.ufg.inf.support.MenuHelper.*;
-import static br.ufg.inf.support.TipoVenda.CARTAO;
-import static br.ufg.inf.support.TipoVenda.DINHEIRO;
+import static br.ufg.inf.helpers.MenuHelper.*;
+import static br.ufg.inf.models.TipoVenda.CARTAO;
+import static br.ufg.inf.models.TipoVenda.DINHEIRO;
 
 public class Caixa {
     private int numero;
