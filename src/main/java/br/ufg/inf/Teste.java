@@ -46,8 +46,8 @@ public class Teste {
     }
 
     public static void main(String[] args) {
+        inicializaSupermercado();
         do {
-            inicializaSupermercado();
             menuInicial.imprimeMenu();
             opcaoMenuInicial = getInputInteiro();
             opcaoMenuInicial = validaOpcaoMenu(MenuInicial.class, opcaoMenuInicial);
