@@ -11,7 +11,7 @@ public class MenuHelper {
     private static Scanner scan = new Scanner(System.in);
 
     public static void limpaConsole() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n");
     }
 
     public static int getInputInteiro() {

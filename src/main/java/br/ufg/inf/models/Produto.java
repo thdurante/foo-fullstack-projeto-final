@@ -18,15 +18,6 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-
-
-    public Produto(String nome, double valor, UnidadeDeMedida unidadeDeMedida) {
-        this.codigo = UUID.randomUUID().toString();
-        this.nome = nome;
-        this.valor = valor;
-        this.unidadeDeMedida = unidadeDeMedida;
-    }
-
     public String getCodigo() {
         return codigo;
     }

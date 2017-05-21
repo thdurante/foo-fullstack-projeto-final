@@ -54,8 +54,7 @@ public class Teste {
 
             switch (MenuInicial.Opcao.getOpcaoFromCodigo(opcaoMenuInicial)) {
                 case SAIR:
-                    System.out.println("saindo");
-                    limpaConsole();
+                    System.out.println("Obrigado por utilizar nosso sistema, até mais!");
                     break;
                 case LISTAR_EMPREGADOS:
                     supermercado.listaEmpregados();
