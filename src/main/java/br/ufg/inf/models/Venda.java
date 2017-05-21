@@ -1,7 +1,5 @@
 package br.ufg.inf.models;
 
-import br.ufg.inf.support.TipoVenda;
-
 import java.util.*;
 
 public class Venda {

@@ -1,13 +1,14 @@
 package br.ufg.inf.models;
 
-import br.ufg.inf.support.MenuHelper;
+import br.ufg.inf.helpers.MenuHelper;
 import br.ufg.inf.support.MenuGerente;
-import br.ufg.inf.support.ProdutoHelper;
-import br.ufg.inf.support.UnidadeDeMedida;
+import br.ufg.inf.helpers.ProdutoHelper;
+import br.ufg.inf.exceptions.SemMovimentacaoException;
+import br.ufg.inf.exceptions.SemCaixaException;
 
 import java.util.List;
 
-import static br.ufg.inf.support.MenuHelper.*;
+import static br.ufg.inf.helpers.MenuHelper.*;
 
 public class Gerente extends Empregado {
 
@@ -89,34 +90,45 @@ public class Gerente extends Empregado {
                     List<Caixa> listaCaixas = supermercado.getCaixas();
                     int contSemVendas = 0;
 
-                    if (listaCaixas.size() > 0) {
+                    try{
+                        if (listaCaixas.size() > 0) {
 
-                        for (Caixa cx : listaCaixas) {
-                            System.out.println("\n\n");
+                            for (Caixa cx : listaCaixas) {
+                                System.out.println("\n\n");
 
-                            List<Venda> listaVendas = cx.getVendas();
-                            if (listaVendas.size() > 0) {
-                                System.out.println("VENDAS NO CAIXA " + cx.getNumero());
-                                System.out.println("========================================");
-                                for (Venda venda : listaVendas) {
-                                    System.out.println("Responsável pela venda: " + cx.getFuncionario().getNome());
-                                    System.out.println("Pagamento: " + venda.getTipoVenda());
-                                    System.out.println("Valor: R$" + venda.getValorTotal());
-                                    System.out.println("Data: " + venda.getData());
-                                    System.out.println("----------------------------------------");
+                                List<Venda> listaVendas = cx.getVendas();
+                                if (listaVendas.size() > 0) {
+                                    System.out.println("VENDAS NO CAIXA " + cx.getNumero());
+                                    System.out.println("========================================");
+                                    for (Venda venda : listaVendas) {
+                                        System.out.println("Responsável pela venda: " + cx.getFuncionario().getNome());
+                                        System.out.println("Pagamento: " + venda.getTipoVenda());
+                                        System.out.println("Valor: R$" + venda.getValorTotal());
+                                        System.out.println("Data: " + venda.getData());
+                                        System.out.println("----------------------------------------");
+                                    }
+                                } else {
+                                    contSemVendas++;
                                 }
-                            } else {
-                                contSemVendas++;
+
                             }
 
+                                if (contSemVendas >= listaCaixas.size()) {
+                                    throw new SemMovimentacaoException("Nenhuma venda foi realizada");
+
+                                }
+
+
+                        } else {
+                            throw new SemCaixaException("Supermercado não possui caixa ativo");
                         }
 
-                        if (contSemVendas >= listaCaixas.size()) {
-                            System.out.println("O supermercado ainda não fez nenhuma venda!");
-                            System.out.println("\n");
-                        }
-                    } else {
-                        System.out.println("O supermercado ainda não possui caixas");
+                    }catch (SemMovimentacaoException e ){
+                        System.out.println("O supermercado ainda não fez nenhuma venda!");
+                        System.out.println("\n");
+
+                    }catch (SemCaixaException e){
+                        System.out.println("O supermercado não possui nenhum caixa ativo");;
                     }
 
                     break;

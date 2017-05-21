@@ -1,7 +1,5 @@
 package br.ufg.inf.models;
 
-import br.ufg.inf.support.UnidadeDeMedida;
-
 import java.util.UUID;
 
 public class Produto {

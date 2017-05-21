@@ -3,10 +3,10 @@ package br.ufg.inf;
 import br.ufg.inf.models.*;
 import br.ufg.inf.support.Menu;
 import br.ufg.inf.support.MenuInicial;
-import br.ufg.inf.support.ProdutoHelper;
-import br.ufg.inf.support.UnidadeDeMedida;
+import br.ufg.inf.helpers.ProdutoHelper;
+import br.ufg.inf.models.UnidadeDeMedida;
 
-import static br.ufg.inf.support.MenuHelper.*;
+import static br.ufg.inf.helpers.MenuHelper.*;
 
 public class Teste {
 
