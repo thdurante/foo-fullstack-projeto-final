@@ -11,5 +11,5 @@ O Projeto Final será executado pelos seguintes alunos:
 Para rodar o projeto, siga os passos adiante:
 ```
 Na pasta raiz do projeto:
-$ java -jar projeto-final.jar
+$ java -jar foo-fullstack-projeto-final-1.0-SNAPSHOT.jar
 ```
